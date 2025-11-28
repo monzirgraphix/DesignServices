@@ -1,0 +1,594 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>خدمات التصميم - Design Services</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --primary-color: #000;
+            --secondary-color: #fff;
+            --accent-color: rgba(0, 0, 0, 0.7);
+            --glass-effect: rgba(255, 255, 255, 0.1);
+            --glass-border: rgba(255, 255, 255, 0.2);
+            --glass-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            transition: all 0.3s ease;
+        }
+
+        body {
+            background: linear-gradient(-45deg, #000000, #2d2d2d, #000000, #2d2d2d);
+            background-size: 400% 400%;
+            animation: gradient 15s ease infinite;
+            color: var(--primary-color);
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 20px;
+        }
+
+        @keyframes gradient {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+
+        .container {
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 0;
+            margin-bottom: 30px;
+            background: var(--glass-effect);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            border: 1px solid var(--glass-border);
+            border-radius: 15px;
+            box-shadow: var(--glass-shadow);
+            padding: 20px;
+        }
+
+        .logo {
+            font-size: 28px;
+            font-weight: 700;
+            color: var(--secondary-color);
+            text-decoration: none;
+        }
+
+        .language-switcher {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            background: var(--glass-effect);
+            padding: 8px 15px;
+            border-radius: 25px;
+            border: 1px solid var(--glass-border);
+            cursor: pointer;
+            color: var(--secondary-color);
+        }
+
+        .language-switcher:hover {
+            background: rgba(255, 255, 255, 0.2);
+        }
+
+        .language-switcher i {
+            font-size: 18px;
+        }
+
+        .hero {
+            text-align: center;
+            margin-bottom: 40px;
+            background: var(--glass-effect);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            border: 1px solid var(--glass-border);
+            border-radius: 15px;
+            padding: 30px;
+            box-shadow: var(--glass-shadow);
+        }
+
+        .hero h1 {
+            font-size: 36px;
+            margin-bottom: 15px;
+            color: var(--secondary-color);
+        }
+
+        .hero p {
+            font-size: 18px;
+            color: var(--secondary-color);
+            opacity: 0.8;
+        }
+
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 25px;
+            margin-bottom: 40px;
+        }
+
+        .service-card {
+            background: var(--glass-effect);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            border: 1px solid var(--glass-border);
+            border-radius: 15px;
+            padding: 25px;
+            box-shadow: var(--glass-shadow);
+            color: var(--secondary-color);
+            transition: transform 0.3s ease;
+            cursor: pointer; /* Add cursor pointer to indicate interactivity */
+            position: relative;
+        }
+
+        .service-card:hover {
+            transform: translateY(-5px);
+            background: rgba(255, 255, 255, 0.15);
+        }
+
+        .service-card.selected {
+            border: 2px solid #FFD700; /* Highlight selected card (Gold) */
+            box-shadow: 0 0 15px #FFD700;
+        }
+
+        .service-card h3 {
+            font-size: 20px;
+            margin-bottom: 15px;
+            border-bottom: 1px solid var(--glass-border);
+            padding-bottom: 10px;
+        }
+
+        .price {
+            font-size: 24px;
+            font-weight: 700;
+            margin: 15px 0;
+            color: var(--secondary-color);
+        }
+
+        .service-card ul {
+            list-style-type: none;
+            margin-top: 15px;
+        }
+
+        .service-card li {
+            margin-bottom: 8px;
+            position: relative;
+            padding-left: 20px;
+        }
+
+        .service-card li:before {
+            content: "•";
+            position: absolute;
+            left: 0;
+            color: var(--secondary-color);
+        }
+
+        /* Checkbox style for selection */
+        .service-card input[type="checkbox"] {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            width: 20px;
+            height: 20px;
+            cursor: pointer;
+            z-index: 10;
+        }
+
+        /* Order Summary and Form Styles */
+        #order-section {
+            margin-top: 40px;
+            padding: 30px;
+            background: var(--glass-effect);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            border: 1px solid var(--glass-border);
+            border-radius: 15px;
+            box-shadow: var(--glass-shadow);
+            color: var(--secondary-color);
+        }
+
+        #order-section h2 {
+            text-align: center;
+            margin-bottom: 20px;
+            font-size: 28px;
+        }
+
+        #selected-services-list {
+            list-style: none;
+            padding: 0;
+            margin-bottom: 20px;
+        }
+
+        #selected-services-list li {
+            display: flex;
+            justify-content: space-between;
+            padding: 8px 0;
+            border-bottom: 1px dashed var(--glass-border);
+        }
+
+        #total-price {
+            font-size: 28px;
+            font-weight: 700;
+            text-align: center;
+            margin-top: 20px;
+            padding-top: 10px;
+            border-top: 2px solid var(--glass-border);
+        }
+
+        /* Policy Section */
+        #policy-section {
+            margin-top: 30px;
+            padding: 20px;
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 10px;
+            border: 1px solid var(--glass-border);
+        }
+
+        #policy-section h3 {
+            margin-bottom: 15px;
+            font-size: 22px;
+            text-align: center;
+        }
+
+        #policy-section ul {
+            list-style-type: disc;
+            margin-right: 20px;
+            line-height: 1.6;
+            opacity: 0.9;
+        }
+
+        /* Form Styles */
+        #order-form {
+            margin-top: 30px;
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+
+        #order-form input[type="text"],
+        #order-form input[type="email"],
+        #order-form input[type="tel"] {
+            padding: 12px;
+            border-radius: 8px;
+            border: 1px solid var(--glass-border);
+            background: rgba(255, 255, 255, 0.1);
+            color: var(--secondary-color);
+            font-size: 16px;
+            width: 100%;
+        }
+
+        #order-form input::placeholder {
+            color: rgba(255, 255, 255, 0.6);
+        }
+
+        .policy-agreement {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin-top: 10px;
+        }
+
+        .policy-agreement input[type="checkbox"] {
+            width: 18px;
+            height: 18px;
+            cursor: pointer;
+        }
+
+        #submit-button {
+            padding: 15px;
+            border: none;
+            border-radius: 8px;
+            background-color: #FFD700;
+            color: var(--primary-color);
+            font-size: 18px;
+            font-weight: 700;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        #submit-button:hover:not(:disabled) {
+            background-color: #CCAD00; /* Darker Gold for hover */
+        }
+
+        #submit-button:disabled {
+            background-color: #555;
+            cursor: not-allowed;
+        }
+
+        footer {
+            background: var(--glass-effect);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            border: 1px solid var(--glass-border);
+            border-radius: 15px;
+            padding: 30px;
+            box-shadow: var(--glass-shadow);
+            width: 100%;
+            color: var(--secondary-color);
+            margin-top: 40px;
+        }
+
+        .social-links {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            margin-bottom: 25px;
+        }
+
+        .social-links a {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            background: var(--glass-effect);
+            border: 1px solid var(--glass-border);
+            color: var(--secondary-color);
+            font-size: 20px;
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+
+        .social-links a:hover {
+            background: rgba(255, 255, 255, 0.2);
+            transform: translateY(-3px);
+        }
+
+        .contact-info {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        .contact-info p {
+            margin-bottom: 10px;
+            font-size: 18px;
+        }
+
+        .copyright {
+            text-align: center;
+            opacity: 0.7;
+            font-size: 14px;
+            margin-top: 20px;
+        }
+
+        /* RTL and LTR styles */
+        [dir="rtl"] {
+            text-align: right;
+        }
+
+        [dir="ltr"] {
+            text-align: left;
+        }
+
+        [dir="ltr"] .service-card li {
+            padding-left: 0;
+            padding-right: 20px;
+        }
+
+        [dir="ltr"] .service-card li:before {
+            left: auto;
+            right: 0;
+        }
+
+        /* Responsive design */
+        @media (max-width: 768px) {
+            .services-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            header {
+                flex-direction: column;
+                gap: 15px;
+            }
+            
+            .hero h1 {
+                font-size: 28px;
+            }
+            
+            .social-links {
+                flex-wrap: wrap;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <a href="#" class="logo" data-en="MonzirGraphix" data-ar="MonzirGraphix">خدمات التصميم</a>
+            <div class="language-switcher" id="languageSwitcher">
+                <i class="fas fa-globe"></i>
+                <span data-en="English" data-ar="English">English</span>
+            </div>
+        </header>
+
+        <section class="hero">
+            <h1 data-en="Professional Design Services" data-ar="خدمات التصميم الاحترافية">خدمات التصميم الاحترافية</h1>
+            <p data-en="High quality designs at competitive prices" data-ar="تصاميم عالية الجودة بأسعار منافسة">تصاميم عالية الجودة بأسعار منافسة</p>
+        </section>
+
+        <div class="services-grid" id="services-grid">
+            <!-- Service Cards - Now with data attributes for price and ID -->
+            <div class="service-card" data-service-id="logo" data-price="50" data-en-name="Logo" data-ar-name="لوقو">
+                <input type="checkbox" class="service-checkbox">
+                <h3 data-en="Logo" data-ar="لوقو">لوقو</h3>
+                <div class="price">$50</div>
+                <p data-en="Professional logo design" data-ar="تصميم لوقو احترافي">تصميم لوقو احترافي</p>
+            </div>
+
+            <div class="service-card" data-service-id="identity-lite" data-price="100" data-en-name="Identity Package Lite" data-ar-name="باقة الهوية Lite">
+                <input type="checkbox" class="service-checkbox">
+                <h3 data-en="Identity Package Lite" data-ar="باقة الهوية Lite">باقة الهوية Lite</h3>
+                <div class="price">$100</div>
+                <p data-en="Logo - Pattern - Letterhead - Business Card - Stamp" data-ar="لوقو - نمط او باترن - ورقة مروسة - بطاقة عمل - ختم">لوقو - نمط (باترن) - ورقة مروسة - بطاقة عمل - ختم</p>
+            </div>
+
+            <div class="service-card" data-service-id="business-card" data-price="15" data-en-name="Business Card" data-ar-name="بطاقة عمل">
+                <input type="checkbox" class="service-checkbox">
+                <h3 data-en="Business Card" data-ar="بطاقة عمل">بطاقة عمل</h3>
+                <div class="price">$15</div>
+                <p data-en="Professional business card design" data-ar="تصميم بطاقة عمل احترافية">تصميم بطاقة عمل احترافية</p>
+            </div>
+
+            <div class="service-card" data-service-id="letterhead" data-price="15" data-en-name="Letterhead" data-ar-name="ورقة مروسة">
+                <input type="checkbox" class="service-checkbox">
+                <h3 data-en="Letterhead" data-ar="ورقة مروسة">ورقة مروسة</h3>
+                <div class="price">$15</div>
+                <p data-en="Professional letterhead design" data-ar="تصميم ورقة مروسة احترافية">تصميم ورقة مروسة احترافية</p>
+            </div>
+
+            <!-- New Service: Banner Design -->
+            <div class="service-card" data-service-id="banner" data-price="20" data-en-name="Banner Design" data-ar-name="تصميم لافتة">
+                <input type="checkbox" class="service-checkbox">
+                <h3 data-en="Banner Design" data-ar="تصميم لافتة">تصميم لافتة</h3>
+                <div class="price">$20</div>
+                <p data-en="Professional banner design" data-ar="تصميم لافتة احترافية">تصميم لافتة احترافية</p>
+            </div>
+
+            <!-- Updated Service: Invoice Design (Price changed to $10) -->
+            <div class="service-card" data-service-id="invoice" data-price="15" data-en-name="Invoice" data-ar-name="فاتورة">
+                <input type="checkbox" class="service-checkbox">
+                <h3 data-en="Invoice" data-ar="فاتورة">فاتورة</h3>
+                <div class="price">$15</div>
+                <p data-en="Professional invoice design" data-ar="تصميم فاتورة احترافية">تصميم فاتورة احترافية</p>
+            </div>
+
+            <!-- Updated Service: Stamp Design -->
+            <div class="service-card" data-service-id="Stamp" data-price="5" data-en-name="Stamp" data-ar-name="ختم">
+                <input type="checkbox" class="service-checkbox">
+                <h3 data-en="Stamp" data-ar="ختم">ختم</h3>
+                <div class="price">$5</div>
+                <p data-en="Professional Stamp design" data-ar="تصميم ختم احترافي ">تصميم ختم احترافي</p>
+            </div>
+
+            <!-- New Service: QR Code with Web Page -->
+            <div class="service-card" data-service-id="qr-code" data-price="15" data-en-name="QR Code with Web Page" data-ar-name="QR Code مخصص">
+                <input type="checkbox" class="service-checkbox">
+                <h3 data-en="QR Code with Web Page" data-ar="QR Code مخصص">QR Code مخصص</h3>
+                <div class="price">$15</div>
+                <p data-en="Custom QR code linked to a branded social media landing page" data-ar="رمز QR مخصص يربط بصفحة ويب تعريفية بهوية البراند">رمز QR مخصص يربط بصفحة ويب تعريفية بهوية البراند</p>
+            </div>
+
+            <div class="service-card" data-service-id="social-post" data-price="10" data-en-name="Social Media Post" data-ar-name="منشور سوشيال ميديا">
+                <input type="checkbox" class="service-checkbox">
+                <h3 data-en="Social Media Post" data-ar="منشور سوشيال ميديا">منشور سوشيال ميديا</h3>
+                <div class="price">$10</div>
+                <p data-en="Engaging social media post design" data-ar="تصميم منشورات وسائل التواصل الاجتماعي">تصميم منشورات وسائل التواصل الاجتماعي</p>
+            </div>
+
+            <div class="service-card" data-service-id="monthly-lite" data-price="32" data-en-name="Monthly Design Package Lite" data-ar-name="باقة التصميم الشهرية Lite">
+                <input type="checkbox" class="service-checkbox">
+                <h3 data-en="Monthly Design Package Lite" data-ar="باقة التصميم الشهرية Lite">باقة التصميم الشهرية Lite</h3>
+                <div class="price">$32</div>
+                <p data-en="4 designs per month" data-ar="٤ تصاميم في الشهر">٤ تصاميم في الشهر</p>
+            </div>
+
+            <div class="service-card" data-service-id="monthly-mid" data-price="64" data-en-name="Monthly Design Package Mid" data-ar-name="باقة التصميم الشهرية Mid">
+                <input type="checkbox" class="service-checkbox">
+                <h3 data-en="Monthly Design Package Mid" data-ar="باقة التصميم الشهرية Mid">باقة التصميم الشهرية Mid</h3>
+                <div class="price">$64</div>
+                <p data-en="8 designs per month" data-ar="٨ تصاميم في الشهر">٨ تصاميم في الشهر</p>
+            </div>
+
+            <div class="service-card" data-service-id="monthly-extra" data-price="96" data-en-name="Monthly Design Package Extra" data-ar-name="باقة التصميم الشهرية Extra">
+                <input type="checkbox" class="service-checkbox">
+                <h3 data-en="Monthly Design Package Extra" data-ar="باقة التصميم الشهرية Extra">باقة التصميم الشهرية Extra</h3>
+                <div class="price">$96</div>
+                <p data-en="12 designs per month" data-ar="١٢ تصميم في الشهر">١٢ تصميم في الشهر</p>
+            </div>
+        </div>
+
+        <!-- Order Summary and Form Section -->
+        <section id="order-section" style="display: none;">
+            <h2 data-en="Your Order Summary" data-ar="ملخص طلبك">ملخص طلبك</h2>
+            
+            <ul id="selected-services-list">
+                <!-- Selected services will be inserted here by JavaScript -->
+            </ul>
+
+            <div id="total-price">
+                <span data-en="Total:" data-ar="المجموع:">المجموع:</span> <span id="total-amount">$0</span>
+            </div>
+
+            <!-- Policy Section -->
+            <div id="policy-section">
+                <h3 data-en="Work Policies" data-ar="سياسات العمل">سياسات العمل</h3>
+                <ul data-en-policy="
+                    <li>All prices are in USD and are final.</li>
+                    <li>The client must provide all necessary content (texts, images, logos) before starting the design.</li>
+                    <li>The number of revisions is limited to two for each design. Additional revisions may incur extra charges.</li>
+                    <li>Delivery time will be agreed upon with the client and depends on the complexity of the design.</li>
+                    <li>The client must approve the final design before receiving the final files.</li>
+                    <li>Payment terms will be agreed upon after submitting the request.</li>
+                " data-ar-policy="
+                    <li>جميع الأسعار بالدولار الأمريكي وهي نهائية.</li>
+                    <li>يجب على العميل توفير جميع المحتويات اللازمة (نصوص، صور، شعارات) قبل البدء في التصميم.</li>
+                    <li>عدد المراجعات (Revisions) محدود باثنتين لكل تصميم. قد تترتب رسوم إضافية على المراجعات الإضافية.</li>
+                    <li>يتم الاتفاق على وقت التسليم مع العميل ويعتمد على مدى تعقيد التصميم.</li>
+                    <li>يجب على العميل الموافقة على التصميم النهائي قبل استلام الملفات النهائية.</li>
+                    <li>سيتم الاتفاق على شروط الدفع بعد تقديم الطلب.</li>
+                ">
+                    <li>جميع الأسعار بالدولار الأمريكي وهي نهائية.</li>
+                    <li>يجب على العميل توفير جميع المحتويات اللازمة (نصوص، صور، شعارات) قبل البدء في التصميم.</li>
+                    <li>عدد المراجعات (Revisions) محدود باثنتين لكل تصميم. قد تترتب رسوم إضافية على المراجعات الإضافية.</li>
+                    <li>يتم الاتفاق على وقت التسليم مع العميل ويعتمد على مدى تعقيد التصميم.</li>
+                    <li>يجب على العميل الموافقة على التصميم النهائي قبل استلام الملفات النهائية.</li>
+                    <li>سيتم الاتفاق على شروط الدفع بعد تقديم الطلب.</li>
+                </ul>
+            </div>
+
+            <!-- Order Form -->
+            <form id="order-form" action="https://formsubmit.co/monzir121953@gmail.com" method="POST">
+                <!-- Hidden field for services and total -->
+                <input type="hidden" name="_subject" value="طلب تصميم جديد من الموقع">
+                <input type="hidden" name="الخدمات_المختارة" id="form-services-list" required>
+                <input type="hidden" name="المجموع_الإجمالي" id="form-total-amount" required>
+                <input type="hidden" name="_template" value="table"> <!-- Use table template for better readability in email -->
+
+                <!-- User Info Fields -->
+                <input type="text" name="الاسم_الكامل" placeholder="الاسم الكامل" required data-en-placeholder="Full Name">
+                <input type="text" name="رقم_الهاتف_أو_البريد_الإلكتروني" placeholder="رقم الهاتف أو البريد الإلكتروني" required data-en-placeholder="Phone Number or Email">
+
+                <!-- Policy Agreement Checkbox -->
+                <div class="policy-agreement">
+                    <input type="checkbox" id="policy-agree" required>
+                    <label for="policy-agree" data-en="I agree to the work policies." data-ar="أقر بموافقتي على سياسات العمل المذكورة أعلاه.">أقر بموافقتي على سياسات العمل المذكورة أعلاه.</label>
+                </div>
+
+                <button type="submit" id="submit-button" disabled data-en="Submit Order" data-ar="إرسال الطلب">إرسال الطلب</button>
+            </form>
+        </section>
+
+        <footer>
+            <div class="social-links">
+                <a href="#" target="_blank"><i class="fab fa-facebook-f"></i></a>
+                <a href="#" target="_blank"><i class="fab fa-instagram"></i></a>
+                <a href="#" target="_blank"><i class="fab fa-twitter"></i></a>
+                <a href="#" target="_blank"><i class="fab fa-whatsapp"></i></a>
+            </div>
+            <div class="contact-info">
+                <p data-en="Email: info@monzirgraphix.com" data-ar="البريد الإلكتروني: info@monzirgraphix.com">البريد الإلكتروني: info@monzirgraphix.com</p>
+                <p data-en="Phone: +966 50 123 4567" data-ar="الهاتف: +966 50 123 4567">الهاتف: +966 50 123 4567</p>
+            </div>
+            <div class="copyright">
+                <p data-en="&copy; 2025 MonzirGraphix. All rights reserved." data-ar="&copy; 2025 MonzirGraphix. جميع الحقوق محفوظة.">&copy; 2025 MonzirGraphix. جميع الحقوق محفوظة.</p>
+            </div>
+        </footer>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
